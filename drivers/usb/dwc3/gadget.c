@@ -1715,7 +1715,6 @@ static int dwc3_gadget_ep_dequeue(struct usb_ep *ep,
 				}
 			}
 			goto out1;
-
 		}
 		dev_err(dwc->dev, "request %pK was not queued to %s\n",
 				request, ep->name);
@@ -3083,7 +3082,6 @@ static void dwc3_endpoint_interrupt(struct dwc3 *dwc,
 			dbg_log_string("DWC3_DEPEVT_EPCMDCMPLT (%d)",
 							dep->number);
 			wake_up(&dep->wait_end_transfer);
-
 		}
 		break;
 	case DWC3_DEPEVT_STREAMEVT:
