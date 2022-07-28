@@ -537,7 +537,7 @@ int dsi_panel_disp_param_set(struct dsi_panel *panel, u32 param)
 		goto exit;
 	}
 
-	pr_info("param_type = 0x%x\n", param);
+	pr_debug("param_type = 0x%x\n", param);
 
 	if (!panel->panel_initialized
 		&& (param & 0x0F000000) != DISPPARAM_FOD_BACKLIGHT_ON
@@ -554,7 +554,7 @@ int dsi_panel_disp_param_set(struct dsi_panel *panel, u32 param)
 	/* set smart fps status */
 	if (param & 0xF0000000) {
 		fm_stat.enabled = param & 0x01;
-		DSI_INFO("smart dfps enable = [%d]\n", fm_stat.enabled);
+		DSI_DEBUG("smart dfps enable = [%d]\n", fm_stat.enabled);
 	}
 
 	temp = param & 0x0000000F;
@@ -570,7 +570,7 @@ int dsi_panel_disp_param_set(struct dsi_panel *panel, u32 param)
 	case DISPPARAM_PAPERMODE5:
 	case DISPPARAM_PAPERMODE6:
 	case DISPPARAM_PAPERMODE7:
-		pr_info("DISPPARAM_WARM[0x1]~DISPPARAM_PAPERMODE7[0xc] not supported!\n");
+		pr_debug("DISPPARAM_WARM[0x1]~DISPPARAM_PAPERMODE7[0xc] not supported!\n");
 		break;
 	case DISPPARAM_WHITEPOINT_XY:
 		pr_info("read xy coordinate\n");
@@ -840,27 +840,27 @@ int dsi_panel_disp_param_set(struct dsi_panel *panel, u32 param)
 	temp = param & 0xF0000000;
 	switch (temp) {
 	case DISPPARAM_DFPS_LEVEL1:
-		pr_info("DFPS:30fps\n");
+		pr_debug("DFPS:30fps\n");
 		panel->mi_cfg.panel_max_frame_rate = false;
 		break;
 	case DISPPARAM_DFPS_LEVEL2:
-		pr_info("DFPS:48fps\n");
+		pr_debug("DFPS:48fps\n");
 		panel->mi_cfg.panel_max_frame_rate = false;
 		break;
 	case DISPPARAM_DFPS_LEVEL3:
-		pr_info("DFPS:50fps\n");
+		pr_debug("DFPS:50fps\n");
 		panel->mi_cfg.panel_max_frame_rate = false;
 		break;
 	case DISPPARAM_DFPS_LEVEL4:
-		pr_info("DFPS:60fps\n");
+		pr_debug("DFPS:60fps\n");
 		panel->mi_cfg.panel_max_frame_rate = false;
 		break;
 	case DISPPARAM_DFPS_LEVEL5:
-		pr_info("DFPS:90fps\n");
+		pr_debug("DFPS:90fps\n");
 		panel->mi_cfg.panel_max_frame_rate = false;
 		break;
 	case DISPPARAM_DFPS_LEVEL6:
-		pr_info("DFPS:120fps\n");
+		pr_debug("DFPS:120fps\n");
 		panel->mi_cfg.panel_max_frame_rate = true;
 		break;
 	default:
